@@ -231,6 +231,8 @@ const cacheFiles = ['/',
   });
 } */
 
+
+// Register A service worker for offline caching
 if('serviceWorker' in navigator){
   navigator.serviceWorker.catch(function(err){
     console.error(err);
@@ -245,6 +247,8 @@ self.addEventListener('install', function(e){
     );
 } );
 
+
+// Fetch page from cache id already visited
 self.addEventListener('fetch', function(e){
   e.respondWith(
     caches.match(e.request).then(function(response){
